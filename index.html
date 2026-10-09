@@ -2,6 +2,25 @@
 
 <html lang="uk">
 <head>
+ <script>
+  (function() {
+    // Ваш текущий пароль (измените на любой свой)
+    const CORRECT_PASSWORD = "1110";
+
+    // Проверяем, вводил ли человек пароль ранее в этом браузере
+    if (localStorage.getItem("site_access_granted") !== "true") {
+      let pass = prompt("Введите пароль для доступа к сайту:");
+      
+      if (pass === CORRECT_PASSWORD) {
+        localStorage.setItem("site_access_granted", "true");
+      } else {
+        alert("Неверный пароль!");
+        document.write("<h1 style='text-align:center; margin-top:50px;'>Доступ ограничен</h1>");
+        window.stop();
+      }
+    }
+  })();
+</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Електронний квиток</title>
